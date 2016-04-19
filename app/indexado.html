@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>App YopalRadio</title>
+<style type="text/css">
+
+html,body{
+
+margin:0px;
+
+height:100%;
+
+}
+.contenido{
+	width:500px;
+	margin:0 auto;
+	background:url(yopalradio.png) no-repeat;
+	height:100%;
+	position:relative;
+}
+.botonplaypause{
+	position:absolute;
+	vertical-align:middle;
+	display: table-cell;
+	top: 50%;
+    left: 50%;
+	background: url(pause.png) top left no-repeat; 
+    width: 65px;
+    height: 65px;   
+    border: none;
+}
+</style>
+</head>
+
+<body>
+<div class="contenido">
+<button class="botonplaypause" id="playpausebtn">&nbsp;&nbsp;&nbsp;</button>
+ <script>
+var vid, playbtn;
+function intializePlayer(){
+
+
+	// Set object references
+	vid = document.getElementById("audio");
+	playbtn = document.getElementById("playpausebtn");
+	
+	
+	// Add event listeners
+	playbtn.addEventListener("click",playPause,false);
+	
+}
+window.onload = intializePlayer;
+function playPause(){
+	if(vid.paused){
+		vid.play();
+		playbtn.style.background = "url(pause.png)";
+	} else {
+		vid.pause();
+		playbtn.style.background = "url(btn_play_pro.png)";
+	}
+}
+
+</script>
+<audio width="550" height="310" autoplay="" id="audio">
+        <source src="http://listen.radionomy.com/yopalradiocom" type="audio/mpeg" codecs="vorbis">
+        <source src="http://listen64.radionomy.com/yopalradiocom" type="audio/m4a" codecs="vorbis">
+   </audio>	
+</div>
+</body>
+</html>
